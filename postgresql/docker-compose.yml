@@ -1,0 +1,24 @@
+# Use root/example as user/password credentials
+version: '2'
+
+services:
+   db:
+       image: postgres:13.5-alpine
+       container_name : dbpostgresql_ch43
+       environment:
+         POSTGRES_PASSWORD: password
+         POSTGRES_USER: postgres
+         POSTGRES_DB: dbpostgresql_ch43
+         PGDATA: /var/lib/postgresql/data
+       volumes:
+         #- dbpostgresqlch43_vol:/var/lib/postgresql
+         - dbpostgresqlch43_data:/var/lib/postgresql/data
+       ports:
+       - 5439:5432/tcp
+volumes:
+       dbpostgresqlch43_vol:
+         #external: true
+       dbpostgresqlch43_data:
+         #external: true
+       
+    
